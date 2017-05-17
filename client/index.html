@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="bundle.js"></script>
+</body>
+</html>
+
+<style>
+    .todo__list {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .todo__item {
+        padding: .5em .25em;
+        border-bottom: solid 1px #eee;
+    }
+
+    .todo__item:hover {
+        background: #f7f7f7;
+        cursor: pointer;
+    }
+
+    .__completed__ {
+        text-decoration: line-through;
+        user-focus: none;
+        user-select: none;
+    }
+
+    input[type='text'].__readonly__ {
+        border: none;
+        user-select: none;
+        background-color: transparent;
+    }
+
+</style>

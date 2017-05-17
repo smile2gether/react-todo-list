@@ -1,0 +1,33 @@
+{
+  "name": "react-todo-list",
+  "version": "1.0.0",
+  "description": "Todo List App",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon server/server.js --ignore components"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smile2gether/react-todo-list.git"
+  },
+  "author": "Natila Ngaoprateeptham",
+  "dependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.1.0",
+    "css-loader": "^0.28.1",
+    "express": "^4.13.4",
+    "node-sass": "^4.5.3",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.4.0",
+    "redux": "^3.3.1",
+    "redux-logger": "^2.5.0",
+    "sass-loader": "^6.0.5",
+    "webpack": "^1.12.13",
+    "webpack-dev-middleware": "^1.5.1",
+    "webpack-hot-middleware": "^2.6.4"
+  }
+}
