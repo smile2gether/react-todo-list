@@ -1,8 +1,10 @@
 let actions = {
-  addTodo: function(text) {
+  addTodo: function(title, description, dueDate) {
     return {
       type: 'ADD_TODO',
-      text: text
+      title: title,
+      description: description,
+      dueDate: dueDate
     }
   },
 
@@ -27,11 +29,11 @@ let actions = {
     }
   },
 
-  updateTodo: function (id, text) {
+  updateTodo: function (id, title) {
     return {
       type: 'UPDATE_TODO',
       id: id,
-      text: text
+      title: title
     }
   }
 }

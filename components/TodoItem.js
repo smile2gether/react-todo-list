@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 
 class TodoItem extends Component {
 
-  constructor(props, context) {
-    super(props, context)
+  constructor(props) {
+    super(props)
     this.state = {
-        inputText: this.props.todo.text,
+        title: this.props.todo.title,
+        date: this.props.todo.dueDate
     }
   }
 
@@ -22,12 +23,12 @@ class TodoItem extends Component {
   }
 
   handleUpdate() {
-    this.props.actions.updateTodo(this.props.todo.id, this.state.inputText)
+    this.props.actions.updateTodo(this.props.todo.id, this.state.title)
   }
 
   handleChange(event) {
     this.setState({
-      inputText: event.target.value
+      title: event.target.value
     })
   }
 
@@ -38,13 +39,13 @@ class TodoItem extends Component {
                hidden={(this.props.todo.updated === true)}
                onClick={this.handleComplete.bind(this)}/>
         <input type="text"
-               onDoubleClick={this.handleEdit.bind(this)}
                onChange={this.handleChange.bind(this)}
                className={(this.props.todo.updated === true) ? "" : (this.props.todo.completed === true) ? "__completed__ __readonly__" : "__readonly__"}
-               value={this.state.inputText}/>
-        <button hidden={(this.props.todo.updated !== true)}
-                onClick={this.handleUpdate.bind(this)}>
-            Update
+               value={this.state.title}/>
+        <input type="text"
+               value={this.state.dueDate}/>       
+        <button onClick={(this.props.todo.updated) ? this.handleUpdate.bind(this): this.handleEdit.bind(this)}>
+            {(this.props.todo.updated) ? 'Update' : 'Edit'}
         </button>
         <button onClick={this.handleDelete.bind(this)}>Delete</button>
       </li>

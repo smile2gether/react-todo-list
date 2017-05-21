@@ -9,7 +9,7 @@ let reducer = (state, action) => {
     case 'ADD_TODO':
       return Object.assign({}, state, {
         todos: [{
-          text: action.text,
+          title: action.title,
           completed: false,
           updated: false,
           id: getId(state)
@@ -39,7 +39,7 @@ let reducer = (state, action) => {
       return Object.assign({}, state, {
         todos: state.todos.map((todo) => {
           return todo.id === action.id ?
-            Object.assign({}, todo, {text: action.text, updated: false}) : todo
+            Object.assign({}, todo, {title: action.title, updated: false}) : todo
         })
       })
     default: 
