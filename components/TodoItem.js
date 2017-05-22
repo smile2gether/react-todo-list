@@ -15,7 +15,6 @@ class TodoItem extends Component {
         dueDate: this.props.todo.dueDate,
         focused: false,
         checked: this.props.todo.completed,
-        edit: false
     }
   }
 
@@ -32,14 +31,11 @@ class TodoItem extends Component {
 
   handleEdit() {
     this.props.actions.editTodo(this.props.todo.id)
-    this.setState({
-      edit: !this.state.edit
-    })
   }
 
   handleUpdate() {
     if (this.state.title != '') {
-      this.props.actions.updateTodo(this.props.todo.id, this.state.title)
+      this.props.actions.updateTodo(this.props.todo.id, this.state.title, this.state.description, this.state.dueDate)
     }
   }
 

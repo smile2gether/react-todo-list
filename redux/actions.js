@@ -29,11 +29,14 @@ let actions = {
     }
   },
 
-  updateTodo: function (id, title) {
+    updateTodo: function (id, title, description, dueDate) {
     return {
       type: 'UPDATE_TODO',
       id: id,
-      title: title
+      title: title,
+      description: description,
+      dueDate: dueDate
+
     }
   },
 
