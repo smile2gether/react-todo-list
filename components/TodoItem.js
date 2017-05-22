@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates'
+import 'react-dates/lib/css/_datepicker.css';
+import FaEdit from 'react-icons/lib/fa/edit'
+import FaCheck from 'react-icons/lib/fa/check'
+import FaClose from 'react-icons/lib/fa/close'
 
 class TodoItem extends Component {
 
@@ -6,7 +11,9 @@ class TodoItem extends Component {
     super(props)
     this.state = {
         title: this.props.todo.title,
-        date: this.props.todo.dueDate
+        description: this.props.todo.description,
+        dueDate: this.props.todo.dueDate,
+        focused: false
     }
   }
 
@@ -26,9 +33,29 @@ class TodoItem extends Component {
     this.props.actions.updateTodo(this.props.todo.id, this.state.title)
   }
 
-  handleChange(event) {
+  handleTitleChange(event) {
     this.setState({
       title: event.target.value
+    })
+  }
+
+  handleDescriptionChange(event) {
+    this.setState({
+      description: event.target.value
+    })
+  }
+
+  handleDueDateChange(event) {
+    console.log(event);
+    this.setState({
+        dueDate: event
+    })
+  }
+  
+  handleFocusChange(event) {
+    console.log(event);
+    this.setState({
+      focused: ((this.props.todo.updated === true) ? event.focused : this.state.focused)
     })
   }
 
@@ -36,18 +63,28 @@ class TodoItem extends Component {
     return (
       <li className="todo__item">
         <input type="checkbox"
+               checked={(this.props.todo.completed === true)}
                hidden={(this.props.todo.updated === true)}
                onClick={this.handleComplete.bind(this)}/>
         <input type="text"
-               onChange={this.handleChange.bind(this)}
+               onChange={this.handleTitleChange.bind(this)}
                className={(this.props.todo.updated === true) ? "" : (this.props.todo.completed === true) ? "__completed__ __readonly__" : "__readonly__"}
                value={this.state.title}/>
-        <input type="text"
-               value={this.state.dueDate}/>       
+       <input type="text"
+              hidden={(this.props.todo.updated !== true)}
+              className={(this.props.todo.updated === true) ? "" : (this.props.todo.completed === true) ? "__completed__ __readonly__" : "__readonly__"}
+              onChange={this.handleDescriptionChange.bind(this)}
+              value={this.state.description}/>
+        <SingleDatePicker
+            date={this.state.dueDate}
+            onDateChange={ this.handleDueDateChange.bind(this)}
+            focused={this.state.focused} 
+            onFocusChange={this.handleFocusChange.bind(this)} 
+          />
         <button onClick={(this.props.todo.updated) ? this.handleUpdate.bind(this): this.handleEdit.bind(this)}>
-            {(this.props.todo.updated) ? 'Update' : 'Edit'}
+            {(this.props.todo.updated) ? <FaCheck/> : <FaEdit/>}
         </button>
-        <button onClick={this.handleDelete.bind(this)}>Delete</button>
+        <button onClick={this.handleDelete.bind(this)}><FaClose/></button>
       </li>
     )
   }

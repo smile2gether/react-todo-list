@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TodoInput from './TodoInput'
 import TodoList from './TodoList'
+import TodoFilter from './TodoFilter'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import actions from '../redux/actions'
@@ -13,6 +14,7 @@ class App extends Component {
         <h1>Todo List</h1>
         <TodoInput addTodo={this.props.actions.addTodo}/>
         <TodoList actions={this.props.actions} todos={this.props.todos}/>
+        <TodoFilter actions={this.props.actions} todos={this.props.todos}/>
       </div>
     )
   }

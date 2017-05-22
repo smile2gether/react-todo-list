@@ -10,8 +10,11 @@ let reducer = (state, action) => {
       return Object.assign({}, state, {
         todos: [{
           title: action.title,
+          description: action.description,
+          dueDate: action.dueDate,
           completed: false,
           updated: false,
+          display: true,
           id: getId(state)
         }, ...state.todos]
       })
@@ -40,6 +43,26 @@ let reducer = (state, action) => {
         todos: state.todos.map((todo) => {
           return todo.id === action.id ?
             Object.assign({}, todo, {title: action.title, updated: false}) : todo
+        })
+      })
+    case 'SHOW_ALL': 
+       return Object.assign({}, state, {
+        todos: state.todos.map((todo) => {
+            return Object.assign({}, todo, {display: true})
+        })
+      })
+    case 'SHOW_ACTIVE': 
+      return Object.assign({}, state, {
+        todos: state.todos.map((todo) => {
+          return todo.completed !== true  ? 
+            Object.assign({}, todo, {display: true}) : Object.assign({}, todo, {display: false})
+        })
+      })
+    case 'SHOW_COMPLETED': 
+      return Object.assign({}, state, {
+        todos: state.todos.map((todo) => {
+          return todo.completed === true  ? 
+            Object.assign({}, todo, {display: true}) : Object.assign({}, todo, {display: false})
         })
       })
     default: 

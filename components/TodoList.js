@@ -9,7 +9,9 @@ class TodoList extends Component {
 
         {
           this.props.todos.map((todo) => {
-            return <TodoItem key={todo.id} todo={todo} actions={this.props.actions}/>
+            if (todo.display === true) {
+              return <TodoItem key={todo.id} todo={todo} actions={this.props.actions}/>
+            }        
           })
         }
 

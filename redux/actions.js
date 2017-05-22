@@ -35,7 +35,26 @@ let actions = {
       id: id,
       title: title
     }
+  },
+
+  showAll : function() {
+    return {
+      type: 'SHOW_ALL'
+    }
+  },
+
+  showActive : function() {
+    return {
+      type: 'SHOW_ACTIVE'
+    }
+  },
+
+  showCompleted : function() {
+    return {
+      type: 'SHOW_COMPLETED'
+    }
   }
+  
 }
 
 export default actions

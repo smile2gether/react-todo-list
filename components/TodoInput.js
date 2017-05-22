@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
+import FaPlus from 'react-icons/lib/fa/plus'
+
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates'
-import FaPlusSquareO from 'react-icons/lib/fa/plus-square-o'
-
 import moment from 'moment';
-
 import 'react-dates/lib/css/_datepicker.css';
 
 class TodoInput extends Component {
@@ -13,7 +12,7 @@ class TodoInput extends Component {
     this.state = {
       title: '',
       description: '',
-      dueDate: moment(),
+      dueDate: null,
       focused: false
     }
   }
@@ -55,7 +54,7 @@ class TodoInput extends Component {
     this.setState({
       title: '',
       description: '',
-      dueDate: moment()
+      dueDate: null
     })
   }
 
@@ -75,12 +74,13 @@ class TodoInput extends Component {
             onChange={this.handleDescriptionChange.bind(this)}
           />          
           <SingleDatePicker
-            date={this.state.dueDate} // momentPropTypes.momentObj or null
+            placeholder='date reminder'
+            date={this.state.dueDate} 
             onDateChange={ this.handleDueDateChange.bind(this)}
-            focused={this.state.focused} // PropTypes.bool
-            onFocusChange={this.handleFocusChange.bind(this)} // PropTypes.func.isRequired
+            focused={this.state.focused} 
+            onFocusChange={this.handleFocusChange.bind(this)} 
           />          
-          <button onSubmit={this.handleSubmit.bind(this)}><FaPlusSquareO /></button>
+          <button onClick={this.handleSubmit.bind(this)}><FaPlus /></button>
       </div>
     )
   }
