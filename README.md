@@ -1,6 +1,7 @@
 # Todo List
-required node 6+ with latest nodemon for ubuntu 16.04
+required node version 6+ but version 7 is prefered 
 
+For ubuntu 16.04 if problems with nodemon please update latest version by 
 $sudo npm install -g --force nodemon
 
 -- to start demo project use following command --
