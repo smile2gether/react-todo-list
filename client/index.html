@@ -106,6 +106,10 @@
         background-color: transparent;
     }
 
+    input:focus {
+        outline: none; 
+    }
+
     .__filter__ a {
         margin: 4px 12px;
         padding: 4px 6px;
@@ -127,5 +131,15 @@
         background: transparent;
         cursor: pointer;
     }    
+
+    .todo__item .SingleDatePicker__picker {
+        position: fixed;
+        top: 220px;
+    }
+
+    .todo__item .DateInput--with-caret::before, 
+    .todo__item .DateInput--with-caret::after {
+        display: none;
+    } 
 
 </style>

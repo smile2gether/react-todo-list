@@ -14,7 +14,8 @@ class TodoItem extends Component {
         description: this.props.todo.description,
         dueDate: this.props.todo.dueDate,
         focused: false,
-        checked: this.props.todo.completed
+        checked: this.props.todo.completed,
+        edit: false
     }
   }
 
@@ -31,10 +32,15 @@ class TodoItem extends Component {
 
   handleEdit() {
     this.props.actions.editTodo(this.props.todo.id)
+    this.setState({
+      edit: !this.state.edit
+    })
   }
 
   handleUpdate() {
-    this.props.actions.updateTodo(this.props.todo.id, this.state.title)
+    if (this.state.title != '') {
+      this.props.actions.updateTodo(this.props.todo.id, this.state.title)
+    }
   }
 
   handleTitleChange(event) {
@@ -69,11 +75,13 @@ class TodoItem extends Component {
         <input type="checkbox"
                defaultChecked={this.state.checked}
                required={true}
-               placeholder='description'
                hidden={(this.props.todo.updated === true)}
                onClick={this.handleComplete.bind(this)}/>
         <input type="text"
                onChange={this.handleTitleChange.bind(this)}
+               required={true}
+               placeholder='title'
+               disabled={(this.props.todo.updated !== true) ? 'disables' : ''}
                className={(this.props.todo.updated === true) ? "" : (this.props.todo.completed === true) ? "__completed__ __readonly__" : "__readonly__"}
                value={this.state.title}/>
        <input type="text"
