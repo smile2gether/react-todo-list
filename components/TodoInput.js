@@ -69,7 +69,7 @@ class TodoInput extends Component {
         <div className="title">
           <input
             type="text"
-            placeholder="Memo"
+            placeholder="title.."
             required={true}
             value={this.state.title}
             onChange={this.handleTitleChange.bind(this)}
@@ -78,7 +78,7 @@ class TodoInput extends Component {
         <div className="description">
            <input
             type="text"
-            placeholder="description"
+            placeholder="description.."
             value={this.state.description}
             onChange={this.handleDescriptionChange.bind(this)}
           />    
