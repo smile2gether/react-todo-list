@@ -11,10 +11,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Todo List</h1>
+        <h1 className="header">Todos</h1>
         <TodoInput addTodo={this.props.actions.addTodo}/>
         <TodoList actions={this.props.actions} todos={this.props.todos}/>
-        <TodoFilter actions={this.props.actions} todos={this.props.todos}/>
+        <TodoFilter actions={this.props.actions} filter={this.props}/>
       </div>
     )
   }

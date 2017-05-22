@@ -13,12 +13,16 @@ class TodoItem extends Component {
         title: this.props.todo.title,
         description: this.props.todo.description,
         dueDate: this.props.todo.dueDate,
-        focused: false
+        focused: false,
+        checked: this.props.todo.completed
     }
   }
 
   handleComplete() {
     this.props.actions.completeTodo(this.props.todo.id)
+    this.setState({
+      checked: !this.state.checked
+    })
   }
 
   handleDelete() {
@@ -63,7 +67,9 @@ class TodoItem extends Component {
     return (
       <li className="todo__item">
         <input type="checkbox"
-               checked={(this.props.todo.completed === true)}
+               defaultChecked={this.state.checked}
+               required={true}
+               placeholder='description'
                hidden={(this.props.todo.updated === true)}
                onClick={this.handleComplete.bind(this)}/>
         <input type="text"
@@ -72,12 +78,14 @@ class TodoItem extends Component {
                value={this.state.title}/>
        <input type="text"
               hidden={(this.props.todo.updated !== true)}
+              placeholder='description'
               className={(this.props.todo.updated === true) ? "" : (this.props.todo.completed === true) ? "__completed__ __readonly__" : "__readonly__"}
               onChange={this.handleDescriptionChange.bind(this)}
               value={this.state.description}/>
         <SingleDatePicker
             date={this.state.dueDate}
             onDateChange={ this.handleDueDateChange.bind(this)}
+            placeholder='date reminder'
             focused={this.state.focused} 
             onFocusChange={this.handleFocusChange.bind(this)} 
           />

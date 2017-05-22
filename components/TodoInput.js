@@ -47,40 +47,51 @@ class TodoInput extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
+    if (this.state.title != '')
+    {
+      this.props.addTodo(this.state.title, this.state.description, this.state.dueDate)
+      //reset input box
+      this.setState({
+        title: '',
+        description: '',
+        dueDate: null
+      })
+    }
     
-    this.props.addTodo(this.state.title, this.state.description, this.state.dueDate)
-    
-    //reset input box
-    this.setState({
-      title: '',
-      description: '',
-      dueDate: null
-    })
   }
 
   render() {
     return (
-      <div>
+      <div className="todo__input">
+        <div className="submitButton">
+          <button onClick={this.handleSubmit.bind(this)}><FaPlus /></button>
+        </div> 
+        <div className="title">
           <input
             type="text"
-            placeholder="title ..."
+            placeholder="Memo"
+            required={true}
             value={this.state.title}
             onChange={this.handleTitleChange.bind(this)}
           />
+        </div>
+        <div className="description">
            <input
             type="text"
             placeholder="description"
             value={this.state.description}
             onChange={this.handleDescriptionChange.bind(this)}
-          />          
+          />    
+        </div>
+        <div className="date">
           <SingleDatePicker
-            placeholder='date reminder'
+            placeholder='set reminder'
             date={this.state.dueDate} 
             onDateChange={ this.handleDueDateChange.bind(this)}
             focused={this.state.focused} 
             onFocusChange={this.handleFocusChange.bind(this)} 
-          />          
-          <button onClick={this.handleSubmit.bind(this)}><FaPlus /></button>
+          />
+        </div> 
       </div>
     )
   }

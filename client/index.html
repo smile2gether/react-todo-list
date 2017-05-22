@@ -11,10 +11,37 @@
 </html>
 
 <style>
+    html {
+        text-align: center;
+    }
+
+    .header {
+        position: absolute;
+        top: -157px;
+        width: 100%;
+        font-size: 100px;
+        font-weight: 100;
+        text-align: center;
+        color: rgba(154, 154, 154, 0.15);
+        z-index: -2;
+    }
+
+    #app {
+        width: 100%;
+        max-width: 600px;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
     .todo__list {
         margin: 0;
         padding: 0;
         list-style-type: none;
+        max-height: 280px;
+        overflow-y: scroll;
     }
 
     .todo__item {
@@ -29,8 +56,48 @@
 
     .__completed__ {
         text-decoration: line-through;
-        user-focus: none;
         user-select: none;
+    }
+
+    .todo__input {
+        border: 1px solid #f3f3f3;
+        box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.07);
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    .todo__input .title input[type='text'] {
+        position: relative;
+        margin: 0;
+        width: 100%;
+        max-width: 560px;
+        font-size: 24px;
+        font-family: inherit;
+        font-weight: inherit;
+        line-height: 1.4em;
+        border: 0;
+        outline: none;
+        color: inherit;
+        padding: 6px;
+    }
+
+    .todo__input .description input[type='text'] {
+        position: relative;
+        margin: 0;
+        width: 100%;
+        max-width: 560px;
+        font-size: 16px;
+        font-family: inherit;
+        font-weight: inherit;
+        line-height: 1em;
+        border: 0;
+        outline: none;
+        color: inherit;
+        padding: 6px;
+    }
+
+    .todo__input .submitButton button {
+        float: right;
     }
 
     input[type='text'].__readonly__ {
@@ -50,13 +117,15 @@
     }
 
      /* Date picker */
-    .SingleDatePickerInput {
+    .SingleDatePickerInput,
+    .DateInput {
         border: none !important;
         background-color: transparent;
     }
 
-    .DateInput {
+    .DateInput__input {
         background: transparent;
+        cursor: pointer;
     }    
 
 </style>
