@@ -10,6 +10,7 @@
     "type": "git",
     "url": "https://github.com/smile2gether/react-todo-list.git"
   },
+  "license": "MIT",
   "author": "Natila Ngaoprateeptham",
   "dependencies": {
     "babel-core": "^6.4.5",
@@ -22,17 +23,18 @@
     "moment": "^2.18.1",
     "node-sass": "^4.5.3",
     "react": "^15.5.4",
-    "react-addons-shallow-compare": "^15.5.2",
+    "react-bootstrap": "^0.30.8",
     "react-dates": "^12.1.0",
     "react-dom": "^15.5.4",
     "react-icons": "^2.2.5",
     "react-redux": "^4.4.0",
     "redux": "^3.3.1",
     "redux-logger": "^2.5.0",
+    "redux-storage": "^4.1.2",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.17.0",
     "to-string-loader": "^1.1.5",
-    "webpack": "^1.12.13",
+    "webpack": "^2.0.0",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.6.4"
   }

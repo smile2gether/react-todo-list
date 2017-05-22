@@ -65,7 +65,7 @@ class TodoItem extends Component {
   handleFocusChange(event) {
     console.log(event);
     this.setState({
-      focused: ((this.props.todo.updated === true) ? event.focused : this.state.focused)
+      focused: event.focused
     })
   }
 
@@ -93,6 +93,7 @@ class TodoItem extends Component {
         <SingleDatePicker
             date={this.state.dueDate}
             onDateChange={ this.handleDueDateChange.bind(this)}
+            disabled={(this.props.todo.updated !== true)}
             placeholder='date reminder'
             focused={this.state.focused} 
             onFocusChange={this.handleFocusChange.bind(this)} 
